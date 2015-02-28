@@ -1,0 +1,1357 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <title>Gestión de residuos sólidos urbanos en la Región Metropolitana de Buenos Aires</title>
+	
+	<!--UNSAM-->
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link rel="shortcut icon" href="http://www.unsam.edu.ar/imagenes/favicon.ico" type="image/x-icon" /> 
+	<title>UNSAM - UNIVERSIDAD NACIONAL DE SAN MART&Iacute;N</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.unsam.edu.ar/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<script type="text/javascript" src="http://www.unsam.edu.ar/fancybox/jquery.easing-1.4.pack.js"></script>
+	<script type="text/javascript" src="http://www.unsam.edu.ar/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type='text/javascript' src='http://noticias.unsam.edu.ar/wp-includes/js/swfobject.js?ver=2.2'></script>
+	<link rel="stylesheet" type="text/css" href="http://www.unsam.edu.ar/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="http://www.unsam.edu.ar/css/secundarias.css"/>
+	<!--UNSAM-->
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="lib/bastrap3/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="lib/bastrap3/jquery.min.js"></script>
+	<script src="lib/bastrap3/bootstrap.min.js"></script>
+	<script src="lib/topojson.v0.min.js"></script>
+	<script src="lib/queue.v1.min.js"></script>
+	<script src="lib/d3.v3.min.js"></script>
+</head>
+<!--UNSAM-->
+<body>
+
+<div id="caja">
+	<div id="top">
+    	<div id="logounsam"><div class="oculto"><a href="#contenido">Contenido principal</a></div><a href="/"><img src="http://www.unsam.edu.ar/img/sec_logounsam1.png" width="319" height="76" alt="Volver al inicio" title="Volver a inicio" border="0" /></a>
+    	  
+        </div>
+<div id="top_der">
+        	<div id="sociales"><img src="http://www.unsam.edu.ar/img/sec_sociales.jpg" width="204" height="55" alt="sociales" usemap="#Map" border="0" /> 
+            	<map name="Map" id="Map">
+                      <area shape="rect" coords="83,26,111,55" href="http://www.facebook.com/unsamoficial" target="_blank" alt="Facebook" />
+                  <area shape="rect" coords="112,28,137,54" href="http://www.twitter.com/unsamoficial" target="_blank" alt="Twitter" />
+                  <area shape="rect" coords="138,28,163,55" href="http://www.youtube.com/unsamoficial" target="_blank" alt="Youtube" />
+                    <area shape="rect" coords="162,26,190,53" href="https://plus.google.com/u/0/b/115956364792143217498/115956364792143217498/posts" target="_blank" alt="Google+" />
+                    </map>
+          </div>
+            <div id="top_accesos"><a href="/">Inicio</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.unsam.edu.ar/alumnos/_alumnos.asp">Alumnos</a><!--&nbsp;&nbsp;|&nbsp;&nbsp;<a href="/profesores/index.asp">Profesores</a> -->&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.unsam.edu.ar/intranet/personalUNSAM.asp">Personal UNSAM</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.bibliotecacentral.unsam.edu.ar/" >Biblioteca </a>
+            </div>
+    </div>
+    </div>
+    <div id="menu-horiz">
+    	<div id="menu-ul">
+        <ul>
+        <li><a href="http://www.unsam.edu.ar/insti/_institucional.asp">Institucional</a></li>
+        <li><a href="http://www.unsam.edu.ar/oferta/carreras/_carreras.asp">Oferta académica</a></li>
+		<li><a href="http://www.unsam.edu.ar/investigacion/investigacion.asp">Investigación y desarrollo</a></li>        
+		<li><a href="http://www.unsam.edu.ar/arte/_arte.asp">Arte</a></li>        
+		<li><a href="http://www.unsam.edu.ar/comunidad.asp">Comunidad</a></li>        
+        </ul>
+        </div>
+        <div id="sec_bot_noticias"><a href="http://noticias.unsam.edu.ar" target="_blank"><img src="http://www.unsam.edu.ar/img/sec_bot_noticias.gif" alt="link al portal de noticias UNSAM" width="182" height="31" border="0" /></a></div>
+    </div>
+
+<!--UNSAM-->
+
+    <div id="menu-horizb">
+
+        <div class="row">
+          <div align="center">
+            <h4>Gestión de residuos sólidos urbanos en la Región Metropolitana de Buenos Aires</h4>
+          </div>
+		</div>
+	</div>
+	<table width="960">
+		<tr>
+		<td>
+<div class="collapse navbar-collapse" id="main-nav">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a data-toggle="modal" data-target="#myModal">Acerca de</a></li>
+              <li><a data-toggle="modal" data-target="#myDownload">Descargas</a></li>
+			  <li><a href="mailto:oficinametropolitana@buenosaires.gob.ar"><img src="img/mail-act.png" width="20"></a></li>
+			  <li><a onclick="twitter();"><img src="img/tw-act.png" width="20"></a></li>
+			  <li><a onclick="facebook();"><img src="img/fb-act.png" width="20"></a></li>
+			  <li><a onclick="google();"><img src="img/gmas-act.png" width="20"></a></li>
+            </ul>
+          </div>
+		</td>
+		</tr>
+	</table>
+<div class="row">
+	<div class="col-xs-2">
+		<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+			<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+			Datos sobre residuos sólidos urbanos
+			</a>
+			</h4>
+		</div>
+		<div id="collapseOne" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked">
+				<li role="presentation" class="active"><a onclick="timeseries='ceamse'; xindicator=2013, init();">Residuos enviados al CEAMSE</a></li>
+				<li role="presentation"><a onclick="timeseries='', indicator='percapita2013'; init();">Residuos enviados al CEAMSE per cápita</a></li>
+				<li role="presentation"><a onclick="timeseries='', indicator='rsuspending'; init();">Gasto en RSU</a></li>
+				<li role="presentation"><a onclick="timeseries='', indicator='percapitaspending'; init();">Gasto RSU per capita</a></li>
+				<li role="presentation"><a onclick="timeseries='', indicator='rsutotalspending'; init();">Porcentaje destinado a RSU</a></li>					
+				<li role="presentation"><a onclick="timeseries='', dumps();">Sitio de disposición</a></li>
+			</ul>
+			</div>
+		</div>
+		</div>
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+					Datos de municipios con recolección diferenciada
+				</a>
+			</h4>
+		</div>
+		<div id="collapseTwo" class="panel-collapse collapse">
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked">
+				<li role="presentation"><a onclick="timeseries='',indicator='recolection'; init();">Residuos recuperados</a></li>
+        		<li role="presentation"><a onclick="timeseries='',indicator='recover2014'; init();">Porcentaje recuperación</a></li>
+				<li role="presentation"><a onclick="timeseries='',indicator='total2014'; init();">Total generado</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>
+	<hr>
+	<div id="source" style="position:relative;left:10px;"></div>
+</div>	
+
+<div class="col-xs-10">
+	<div id="graph" class="aGraph" style="position:absolute;left:280px; top:10px; border:0; width:300px; height:30px;"></div>
+	<div id="slide" style="position:absolute; left:280px; top:520px; display:none;">
+	<input type="range" class="input" id="rangeinput" value="2013" onchange="indicator='ceamse'; xindicator=value; init();" name="year" min="1996" max="2013" step="1"/>
+	</div>
+	<h4 class="panel-title"><div id="year1996" style="display:none"></div></h4>
+	<h4 class="panel-title"><div id="year" style="display:none"></div></h4>
+	<div id="legend" style="position:absolute;left:280px; top:0px; border:0; display:none;">
+		<table>
+		<tr><td><div class="some-box" style="background-color:#3CB5B1;"></div> - Ceamse Norte III</td></tr>
+		<tr><td><div class="some-box" style="background-color:#9C43A3;"></div> - Ceamse Ensenada</td></tr>
+		<tr><td><div class="some-box" style="background-color:#C64B7D;"></div> - Ceamse González Catán</td></tr>
+		<tr><td><div class="some-box" style="background-color:#FFD300;"></div> - Basurero municipal</td></tr>
+		</table>
+	</div>
+	<div id="svg"></div>
+	<br>
+	<div id="variable"></div>
+</div>
+
+</div>
+
+
+<div class="clear"></div>
+
+<div id="separador_pie"></div>
+<div id="pie">
+	<div id="pie_contenido">UNSAM Campus Miguelete, 25 de Mayo y Francia. C.P.: 1650. San Martín, Provincia de Buenos Aires, Argentina<br />
+     Teléfonos: 4006 1500 ó 4724 1500 | <a href="mailto:comunicacion.institucional@unsam.edu.ar" class="link_p">comunicacion.institucional@unsam.edu.ar</a><br />
+    Mantenimiento y Actualización: Gerencia de Tecnología y Sistemas de la Información - Equipo de Comunicaci&oacute;n UNSAM
+	</div>
+</div>
+</div>
+<!-- Button trigger modal -->
+
+<!-- Modal About -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h5 class="modal-title" id="myModalLabel">Información para la gestión de residuos sólidos urbanos</h4>
+      </div>
+      <div class="modal-body">
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="active"><a href="#about" data-toggle="tab" class="tab-btn">Acerca de</a></li>
+			<li><a href="#credits" data-toggle="tab" class="tab-btn">Créditos</a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="about tab-pane active" id="about">
+			<h4 align="center">&nbsp;</h4>
+			<p>La gestión de los residuos sólidos urbanos es un tema crucial de políticas públicas. Por ello es importante relevar las prácticas de los distritos de la región metropolitana de Buenos Aires. Conocer sus experiencias y contar con información de base ayudará a definir propuestas de gestión integral con una perspectiva metropolitana. </p>
+			<p>Esta página web recoge resultados de una investigación de la Escuela de Política y Gobierno (EPYG) de la Universidad Nacional de San Martín financiada por la Agencia Nacional de Promoción Científica y Tecnológica y la Oficina Metropolitana del Gobierno de la Ciudad de Buenos Aires.</p>
+			<table width="90%" align="center">
+			<tr>
+			<td align="center"><img src="img/unsam.png" width="232px"></td>
+			<td align="center"><img src="img/amba.png" width="144px"></td>
+			</tr>
+			</table>
+			</div>
+			<div class="credits tab-pane" id="credits">
+			<h5>Universidad Nacional de San Martín</h5>
+			<h5>Escuela de Política y Gobierno</h5><span class="space">&nbsp;</span>
+				<h5>Investigador responsable</h5>
+				<span class="credit">Ricardo A. Gutiérrez</span>
+				<h5>Equipo de investigación</h5>
+				<table width="80%">
+				<tr><td><span class="credit">Patricio Besana</span></td><td><span class="credit">Marcelo Pastormerlo</span></td></tr>
+				<tr><td><span class="credit">Facundo Christel</span></td><td><span class="credit">Tamara Perelmuter</span></td></tr>
+				<tr><td><span class="credit">María Comelli</span></td><td><span class="credit">Lucas Rodríguez</span></td></tr>
+				<tr><td><span class="credit">Ricardo A. Gutiérrez</span></td><td><span class="credit">Cinthia Shammah</span></td></tr>
+				<tr><td><span class="credit">Ileana López</span></td><td><span class="credit">España Verrastro</span></td></tr>
+				<tr><td><span class="credit">Martín Mantiñán</span></td><td><span class="credit">Juan Wahren</span></td></tr>
+				<tr><td><span class="credit">Itatí Moreno</span></td><td></td></tr>
+				</table><br>
+				<h5>Diseño y desarrollo web</h5>
+				<h5>Coordinación</h5>
+				<span class="credit">Diego Valenzuela</span><br>
+				<span class="credit">Subsecretario AMBA, Ministerio de Gobierno, GCBA</span>
+				<table width="80%">
+				<tr><td width="50%"><h5>Desarrollo</h5><span class="credit">Andrés Tow</span></td><td><p><h5>Producción general</h5><span class="credit">Sociopúblico</span></td></tr>
+				</table>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- Modal Download -->
+<div class="modal fade" id="myDownload" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h5 class="modal-title" id="myModalLabel">Publicación y datos abiertos</h4>
+      </div>
+      <div class="modal-body">
+
+			<h4 align="center">&nbsp;</h4>
+			<p>El proyecto "Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la región metropolitana de Buenos Aires" también difundió sus resultados con una publicación impresa.</p>
+			<p>Tanto la versión digital de la publicación como los datos que alimentan este sitio web pueden descargarse aquí.</p>
+				<table width="80%" align="center">
+				<tr><td align="center" width="50%"><a href="GESTION_RSU.pdf" target="_blank"><button type="button" class="btn btn-sm btn-default">Descargar publicación</button></a></td><td align="center"><a href="data/buenosaires-conurbano.csv" target="_blank"><button type="button" class="btn btn-sm btn-default">Descargar .csv</button></a></td></tr>
+				</table>
+	  </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+		$(".nav.nav-pills li").on("click",function(){
+			$(".nav.nav-pills li").removeClass("active");
+			$(this).addClass("active");
+		});
+		
+		regions = {	"D001" :{type: "ceamse", nombre: "Ciudad de Buenos Aires", basin: "Matanza - Riachuelo", population: "2.890.151", spending: "$ 35.720.128.108"},
+					"D003" :{type: "ceamse", nombre: "Almirante Brown", basin: "Matanza - Riachuelo", population: "552.902", spending: "$ 688.117.000"},
+					"D004" :{type: "ceamse", nombre: "Avellaneda", basin: "Matanza - Riachuelo", population: "342.677", spending: "$ 1.030.227.000"},
+					"D011" :{type: "ceamse", nombre: "Berazategui", basin: "Del Plata", population: "320.244", spending: "$ 543.039.000"},
+					"D012" :{type: "ceamse_ensenada", nombre: "Berisso", basin: "Del Plata ", population: "88.470", spending: "$ 179.320.000"},
+					"D015" :{type: "ceamse_ensenada", nombre: "Brandsen", basin: "San Borombón", population: "26.367", spending: "$ 55.657.000"},
+					"D016" :{type: "basurero", nombre: "Campana", basin: "Luján", population: "94.333", spending: "$ 240.326.000"},
+					"D017" :{type: "basurero", nombre: "Cañuelas", basin: "Matanza - Riachuelo", population: "51.892", spending: "$ 228.909.000"},
+					"D034" :{type: "ceamse_ensenada", nombre: "Ensenada", basin: "Del Plata ", population: "56.729", spending: "$ 192.533.000"},
+					"D035" :{type: "ceamse", nombre: "Escobar", basin: "Luján", population: "213.619", spending: "$ 347.833.000"},
+					"D036" :{type: "ceamse", nombre: "Esteban Echeverría", basin: "Matanza - Riachuelo", population: "300.959", spending: "$ 448.730.000"},
+					"D037" :{type: "basurero", nombre: "Exaltación de la Cruz", basin: "Luján - Areco", population: "29.805", spending: "$ 104.065.000"},
+					"D038" :{type: "ceamse", nombre: "Florencio Varela", basin: "Del Plata ", population: "426.005", spending: "$ 532.268.000"},
+					"D045" :{type: "basurero", nombre: "General Las Heras", basin: "Matanza - Riachuelo", population: "14.889", spending: "$ 38.875.000"},
+					"D051" :{type: "ceamse", nombre: "General Rodríguez", basin: "Reconquista - Luján", population: "87.185", spending: "$ 120.609.000"},
+					"D052" :{type: "ceamse", nombre: "General San Martín", basin: "Reconquista", population: "414.196", spending: "$ 710.976.000"},
+					"D053" :{type: "ceamse", nombre: "San Miguel", basin: "Reconquista", population: "276.190", spending: "$ 432.299.000"},
+					"D061" :{type: "ceamse_gonzalez", nombre: "La Matanza", basin: "Matanza - Riachuelo", population: "1.775.816", spending: "Sin datos"},
+					"D062" :{type: "ceamse", nombre: "Lanús", basin: "Matanza - Riachuelo", population: "459.263", spending: "$ 189.978.000"},
+					"D063" :{type: "ceamse_ensenada", nombre: "La Plata", basin: "Del Plata ", population: "654.324", spending: "$ 1.070.359.000"},
+					"D070" :{type: "ceamse", nombre: "Lomas de Zamora", basin: "Matanza - Riachuelo", population: "616.279", spending: "Sin datos"},
+					"D071" :{type: "basurero", nombre: "Luján", basin: "Reconquista - Luján", population: "106.273", spending: "Sin datos"},
+					"D075" :{type: "basurero", nombre: "Marcos Paz", basin: "Matanza - Riachuelo - Reconquista", population: "54.181", spending: "$ 127.192.000"},
+					"D077" :{type: "ceamse", nombre: "Merlo", basin: "Matanza - Riachuelo - Reconquista", population: "528.494", spending: "$ 838.169.000"},
+					"D079" :{type: "ceamse", nombre: "Moreno", basin: "Reconquista - Luján", population: "452.505", spending: "$ 484.896.000"},
+					"D080" :{type: "ceamse", nombre: "Morón", basin: "Matanza - Riachuelo - Reconquista", population: "321.109", spending: "$ 627.310.000"},
+					"D089" :{type: "ceamse", nombre: "Pilar", basin: "Luján", population: "299.077", spending: "$ 553.768.000"},
+					"D092" :{type: "ceamse", nombre: "Quilmes", basin: "Del Plata ", population: "582.943", spending: "$ 828.474.000"},
+					"D105" :{type: "ceamse", nombre: "San Fernando", basin: "Reconquista", population: "163.240", spending: "$ 268.637.000"},
+					"D195" :{type: "ceamse", nombre: "San Fernando", basin: "Reconquista", population: "163.240", spending: "$ 268.637.000"},
+					"D106" :{type: "ceamse", nombre: "San Isidro", basin: "Reconquista", population: "292.878", spending: "$ 902.720.000"},
+					"D109" :{type: "basurero", nombre: "San Vicente", basin: "Matanza - Riachuelo", population: "59.478", spending: "$ 966.144.000"},
+					"D113" :{type: "ceamse", nombre: "Tigre", basin: "Reconquista - Luján", population: "376.381", spending: "$ 502.074.000"},
+					"D118" :{type: "ceamse", nombre: "Tres de febrero", basin: "Reconquista", population: "340.071", spending: "$ 749.888.000"},
+					"D122" :{type: "ceamse", nombre: "Vicente López", basin: "Reconquista", population: "269.420", spending: "$ 192.750.000"},
+					"D125" :{type: "basurero", nombre: "Zárate", basin: "Areco", population: "114.269", spending: "Sin datos"},
+					"D128" :{type: "ceamse", nombre: "Presidente Perón", basin: "Matanza - Riachuelo", population: "81.141", spending: "$ 126.368.000"},
+					"D129" :{type: "ceamse", nombre: "José C. Paz", basin: "Reconquista - Luján", population: "265.981", spending: "$ 526.611.000"},
+					"D130" :{type: "ceamse", nombre: "Malvinas Argentinas", basin: "Reconquista - Luján", population: "322.375", spending: "Sin datos"},
+					"D132" :{type: "ceamse", nombre: "Ezeiza", basin: "Matanza - Riachuelo", population: "163.722", spending: "Sin datos"},
+					"D133" :{type: "ceamse", nombre: "Ituzaingó", basin: "Reconquista", population: "167.824", spending: "$ 299.986.000"},
+					"D134" :{type: "ceamse", nombre: "Hurlingham", basin: "Reconquista", population: "181.241", spending: "$ 207.994.000"}
+					}
+
+		var sparklines = {
+			"D003": [78534, 88465, 106732, 112349, 111112, 115325, 91317, 85331, 92662, 96319, 100949, 106832, 120026, 139311, 148218, 155334, 155885, 163415],
+			"D004": [117750, 128097, 138869, 144786, 145357, 141283, 109384, 102210, 107644, 115430, 117289, 118467, 117773, 116191, 109594, 114414, 118476, 119503],
+			"D011": [40639, 47001, 55636, 59537, 60754, 56681, 49159, 48334, 51196, 54159, 56923, 54995, 57460, 59858, 61811, 66295, 65562, 63881],
+			"D012": [11811, 13541, 16098, 16629, 16715, 18161, 14714, 13485, 14180, 14972, 16074, 15154, 15696, 18751, 19544, 24246, 23365, 24651],
+			"D015": [0, 0, 0, 0, 0, 0, 3120, 3500, 3770, 4070, 4148, 3333, 3545, 4902, 5882, 6917, 6032, 4911],
+			"D016": [],
+			"D017": [],
+			"D001": [1590755, 1671849, 1817550, 1977253, 1953375, 1835934, 1443047, 1421842, 1492867, 1477147, 1536453, 1645368, 1884460, 1847748, 2110122, 2277772, 2153777, 1556806],
+			"D034": [13049, 11558, 17929, 16114, 14126, 14852, 11362, 10984, 12943, 16720, 18838, 20166, 19555, 21240, 24277, 24966, 28317, 30021],
+			"D035": [0, 0, 0, 0, 0, 0, 0, 20706, 28472, 18161, 0, 2231, 35064, 38575, 40427, 41275, 42378, 35733],
+			"D036": [36773, 38939, 43402, 45952, 46970, 48774, 38518, 38378, 41858, 44575, 47295, 46837, 53235, 58574, 59334, 62665, 62182, 65432],
+			"D037": [],
+			"D132": [13739, 14323, 15358, 16891, 17569, 18337, 14776, 14950, 16962, 18712, 18583, 19950, 19337, 21387, 22991, 25501, 26461, 25806],
+			"D038": [38164, 41352, 49838, 53840, 55635, 55896, 46556, 45333, 48846, 53835, 58358, 57933, 60466, 63421, 67373, 70500, 71232, 71116],
+			"D045": [],
+			"D051": [0, 2693, 11129, 11342, 12021, 9869, 7770, 7513, 7565, 10452, 10697, 10584, 11617, 11142, 11162, 12599, 14889, 11875],
+			"D052": [149258, 155059, 156443, 163789, 165705, 161656, 131541, 130087, 144031, 157719, 171414, 174653, 170441, 175460, 178832, 179848, 180831, 176772],
+			"D134": [59538, 59999, 65543, 66184, 67678, 64692, 53120, 52536, 54359, 56658, 61230, 59266, 58396, 61233, 64608, 64409, 67166, 71429],
+			"D133": [50493, 55981, 64565, 67386, 69579, 70822, 62715, 57041, 59667, 62500, 66616, 70324, 73931, 70638, 77876, 76013, 87441, 65247],
+			"D129": [33640, 38421, 41615, 43936, 45372, 42881, 36655, 35195, 38216, 39959, 41891, 42547, 43050, 47200, 49835, 51582, 54383, 56901],
+			"D061": [286555, 312861, 354287, 345657, 362511, 370561, 306512, 299984, 322434, 356140, 359132, 364464, 393129, 413290, 448917, 471671, 522830, 571270],
+			"D063": [153432, 163542, 193940, 210597, 213615, 213302, 185611, 168337, 181099, 188387, 200922, 195276, 191398, 188306, 178144, 167687, 232706, 226999],
+			"D062": [148349, 148759, 158897, 161612, 160884, 161242, 139862, 129441, 138597, 145872, 151914, 136177, 138793, 164586, 160929, 184810, 197656, 197684],
+			"D070": [143143, 149906, 172102, 166746, 174029, 169384, 142123, 133825, 149933, 159551, 164767, 158286, 155621, 190259, 200715, 217641, 225262, 206480],
+			"D071": [0, 1989, 16911, 17533, 14740, 1907, 1562, 2097, 3653, 124, 0, 0, 0, 0, 0, 0, 0, 0],
+			"D130": [45769, 46724, 50393, 59294, 57602, 60799, 51992, 50205, 54914, 58845, 62975, 63716, 63326, 69301, 73246, 73746, 73658, 71549],
+			"D075": [],
+			"D077": [75305, 84024, 92686, 92453, 91619, 93587, 75891, 69158, 71607, 73981, 79246, 78838, 84012, 110833, 127032, 136201, 137186, 124508],
+			"D079": [44824, 50744, 57300, 61731, 60966, 63926, 53245, 49737, 55464, 58863, 62842, 64908, 66124, 70182, 79880, 85584, 82599, 81111],
+			"D080": [102651, 116500, 132101, 134475, 143156, 152013, 112060, 112139, 115369, 123147, 126000, 128387, 121426, 127749, 127676, 134104, 133431, 125122],
+			"D089": [21962, 28884, 34389, 36986, 40909, 43404, 33302, 32699, 36588, 39666, 43064, 43756, 43984, 46894, 51270, 55116, 56511, 38092],
+			"D128": [5033, 5858, 7202, 8237, 8615, 9215, 7254, 7125, 8024, 8720, 9344, 9914, 10757, 11600, 12474, 13880, 14151, 14111],
+			"D092": [106538, 110270, 127913, 134937, 132512, 130228, 106684, 100847, 103076, 114929, 124971, 127403, 125114, 132183, 132296, 135367, 133579, 120216],
+			"D105": [45914, 54365, 60798, 57860, 53780, 54012, 41832, 39673, 46517, 44678, 51716, 56490, 51314, 52994, 47161, 49735, 56161, 53405],
+			"D195": [45914, 54365, 60798, 57860, 53780, 54012, 41832, 39673, 46517, 44678, 51716, 56490, 51314, 52994, 47161, 49735, 56161, 53405],
+			"D106": [167829, 178623, 194472, 192578, 182379, 178814, 150308, 148104, 156776, 166198, 171848, 178761, 177758, 184608, 206926, 204097, 206955, 198237],
+			"D053": [55442, 61138, 64209, 64976, 64488, 68715, 55359, 54913, 58014, 61552, 66953, 64120, 65066, 70001, 74762, 76617, 78735, 78139],
+			"D109": [],
+			"D113": [77671, 82698, 96389, 103855, 106391, 113131, 101679, 95728, 100614, 113750, 107954, 114216, 121914, 133021, 146289, 144725, 140994, 131993],
+			"D118": [129286, 136037, 145857, 150020, 150321, 149650, 119832, 118376, 122389, 131192, 136825, 141182, 136434, 143095, 144559, 147460, 144200, 143877],
+			"D122": [165625, 164820, 167008, 145024, 137525, 138612, 112927, 115766, 119671, 126671, 136900, 138331, 143757, 142084, 154805, 150861, 146319, 136973],
+			"D125": []
+
+		}
+		
+		var ceamseline = [4055383, 4319381, 4788361, 4998419, 4991788, 4881677, 3953618, 3855252, 4106498, 4258329, 4435846, 4569350, 4885290, 5059610, 5466128, 5753373, 5797471, 5116671];
+					
+		var width = 1060,
+			height = 700;
+
+		var svg = d3.select("#svg").append("svg").attr("width", width).attr("height", height);
+		
+		//LAYOUT
+		svg.append("rect")
+			.attr("width", width)
+			.attr("height", height)
+			.style("fill", "#fff");
+		
+		// MAP
+		var projection = d3.geo.mercator()
+		.scale(15000)
+		.rotate([59.5,33.75])
+		.translate([0, 0]);
+		
+		queue()
+			.defer(d3.csv, 'data/buenosaires-conurbano.csv')
+			.defer(d3.json, 'data/buenosaires-conurbano.topojson')
+			.await(init);
+			   
+		timeseries='ceamse';
+		xindicator=2013;
+		indicator="";
+
+		init();
+		
+		function init() {	
+
+		svg.selectAll("path").remove();
+		
+		document.getElementById('legend').style="position:absolute;left:280px; top:0px; border:0; display:none";
+		
+		var rangeinput = document.getElementById('rangeinput');
+			rangeinput.value=parseInt(xindicator);
+		
+		var slider = document.getElementById('slide');
+ 		slider.style.position="absolute";
+		slider.style.left="34px";
+		slider.style.top="520px";
+		slider.style.display="none";
+			
+		
+		var highlight = function (){
+			
+			var item = d3.select(this)
+				.style("stroke-width", "2px")				
+				.style("opacity", 0.6);
+				
+			var item_class = item.attr("class");
+			
+			//SHOW TOOLTIPS
+			
+			var show_tooltip = true;
+			var show_tooltable = true;
+			
+			if (item_class == "bar_ceamse" || item_class == "bar_basurero" || item_class == "bar_ceamse_ensenada" || item_class == "bar_ceamse_gonzalez"){
+				item_class = item.attr("id");
+				show_tooltip = false;
+			}
+			
+			var detached = $('.' + item_class).detach();
+			$('svg').append(detached);
+				
+			$('.' + item_class).css("stroke", "#fff")
+					   .css("stroke-width", "2.5px")
+					   .css("opacity", 0.6);
+			
+			if (show_tooltip == true){
+				tooltip.text(regions[item_class]["nombre"])
+					   .style("left", (d3.event.pageX - 34) + "px")
+					   .style("top", (d3.event.pageY - 12) + "px");			
+				
+				tooltip.transition()
+					   .duration(500)
+					   .style("opacity", 0.8);;					   
+			}
+			
+			if (show_tooltable == true){
+				tooltable.html('<table align="center"><tr><td height="44px" align="center"><font color="#fff"><h4 class="panel-title">' + (regions[item_class]["nombre"]) + '</h4></font></td></tr></table><table class="table" width="480" style="background:#fff"><tr><td align="center" width="50%"><small><strong>Población (2010)</strong></small></td><td align="center" width="50%"><small>' + (regions[item_class]["population"]) + ' hab.</small></td></tr><tr><td align="center"><small><strong>Cuenca hidrográfica</strong></small></td><td align="center"><small>' + (regions[item_class]["basin"]) + ' </small></td></tr><tr><td align="center"><small><strong>Gasto público total (2012)</strong></small></td><td align="center"><small>' + (regions[item_class]["spending"]) + ' </small></td></tr></table>')
+					   .style("left", 10 + "px")
+					   .style("top", 480 + "px");			
+				
+				tooltable.transition()
+					   .duration(200)
+					   .style("opacity", 0.8);					   
+			}			
+		
+			
+			$('#' + item_class).css("stroke", "grey")
+					   .css("stroke-width", "2px")
+					   .css("opacity", 0.6);
+
+		//SPARKLINES
+		
+		if (timeseries == "ceamse") {
+		
+			var min = d3.min((sparklines[item_class]));
+			var max = d3.max((sparklines[item_class]));
+			var x = d3.scale.linear().domain([0, 10]).range([0, 240]);
+			var y = d3.scale.linear().domain([max, min]).range([0, 60]);
+			var line = d3.svg.line()
+
+				.x(function(d,i) { 
+					return x(i); 
+				})
+				.y(function(d) { 
+					return y(d); 
+				})
+		
+			d3.select("#graph").remove();
+			d3.select("#tooltable").remove();
+			d3.select("#toolrect").remove();
+			
+			var toolrect = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolrect")
+				.attr("id", "toolrect")
+				.attr("opacity", 0.8);
+			
+			toolrect.html('<table width="100%" style="background:#666"><tr><td height="40px"><font color="#fff"><font size="3">Evolución de envíos al CEAMSE de ' + (regions[item_class]["nombre"]) + '</font></font></td></tr></table>')
+					   .style("left", 10 + "px")
+					   .style("top", 480 + "px");
+					   
+			var sparkline = svg.append("path")
+			.attr("transform", function(d) { return "translate(20, 565)"; })
+				.attr("d", line((sparklines[item_class])))
+				.attr("id", "graph")
+				.attr("stroke", "#000")
+				.style("stroke-width", "1.5px")
+				.style("fill", "none");	
+				
+				
+				
+			}					   
+
+		}
+		
+		var unhighlight = function (){
+		
+		
+			var item = d3.select(this)
+				.style("stroke-width", "0.5px")				
+				.style("opacity", 1);
+
+				
+		//TOTAL SPARKLINE
+		if (timeseries == "ceamse") {
+		
+			var min = d3.min((ceamseline));
+			var max = d3.max((ceamseline));
+			var x = d3.scale.linear().domain([0, 10]).range([0, 240]);
+			var y = d3.scale.linear().domain([max, min]).range([0, 60]);
+			var line = d3.svg.line()
+
+				.x(function(d,i) { 
+					return x(i); 
+				})
+				.y(function(d) { 
+					return y(d); 
+				})
+		
+			d3.select("#graph").remove();
+			d3.select("#ceamsegraph").remove();
+			d3.select("#toolrect").remove();
+			
+			var toolrect = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolrect")
+				.attr("id", "toolrect")
+				.attr("opacity", 0.8);
+			
+			toolrect.html('<table width="100%" style="background:#666"><tr><td height="40px"><font color="#fff"><font size="3">Evolución de envíos al CEAMSE. Total jurisdicciones</font></font></td></tr></table>')
+					   .style("left", 10 + "px")
+					   .style("top", 480 + "px");
+					   
+			svg.append("path")
+				.attr("d", line(ceamseline))
+				.attr("id", "graph")
+				.attr("stroke", "#000")
+				.style("stroke-width", "1.5px")
+				.style("fill", "none")
+				.attr("transform", function(d) { return "translate(20, 565)"; });	
+			} else {
+			d3.select("#toolrect").remove()	;
+			}
+			
+			
+			
+			var show_tooltip = true;
+			var show_tooltable = true;
+			
+			var item_class = item.attr("class");
+			
+			if (item_class == "bar_ceamse" || item_class == "bar_basurero" || item_class == "bar_ceamse_ensenada" || item_class == "bar_ceamse_gonzalez"){
+				item_class = item.attr("id");
+				show_tooltip = false;
+			}
+			
+			$('.' + item_class).css("stroke", "#f0f0f0")
+			                   .css("stroke-width", "1.2px")
+							   .css("opacity", 1);
+							   			
+			if (show_tooltip == true){
+				tooltip.transition()
+					   .duration(1000)
+					   .style("opacity", 1e-6);
+			}
+			
+			if (show_tooltable == true){
+				tooltable.transition()
+					   .duration(100)
+					   .style("opacity", 1e-6);
+			}			
+				   
+			$('#' + item_class).css("stroke", "none")
+							   .css("stroke-width", "1.2px")
+							   .css("opacity", 1);
+			
+	
+
+		}
+		
+    
+		//TOOLTIPS
+		d3.select('body').selectAll('div.tooltip').remove();
+		
+		var tooltip = d3.select("body")
+				.append("div")
+				.attr("class", "tooltip")
+				.style("opacity", 1e-6);
+
+		d3.select('body').selectAll('div.tooltable').remove();
+		d3.select("#toolrect").remove();
+
+		var tooltable = d3.select("#svg")
+				.append("div")
+				.attr("class", "tooltable")
+				.attr("id", "tooltable")
+				.style("opacity", 1e-6);
+		
+		function mousemove() {
+			tooltip.style("left", (d3.event.pageX + 3) + "px")
+			       .style("top", (d3.event.pageY - 26) + "px");
+		}	
+		
+	
+		// VARIABLES, LEGEND AND FORMAT
+
+			if (indicator == "population") {
+				variable_text = "<strong>Población</strong> (2010) - en habitantes";
+				var format = d3.format(",.0f");
+				document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+			
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 14 + "px");
+				
+				var legend = document.getElementById('legend');
+				legend.style.display = "none";
+				
+				var slide = document.getElementById('slide');
+				slide.style.display = "none";
+				
+				var year1996 = document.getElementById('year1996');
+				year1996.style.display = "none";
+				
+				var year = document.getElementById('year');
+				year.style.display = "none";
+				
+				var source = document.getElementById('source');
+				source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a fuentes diversas.</small>';					
+			}
+
+			if (timeseries == "ceamse") {
+
+				indicator = timeseries + xindicator;
+				variable_text = "<strong>Residuos enviados al CEAMSE</strong><br>en toneladas (" + xindicator + ")";
+				var format = d3.format(",.0f");
+				document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+			
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 0 + "px");
+		
+		
+				var legend = document.getElementById('legend');
+				legend.style.display = "none";
+				
+				var slider = document.getElementById('slide');
+				slider.style.position="absolute";
+				slider.style.left="34px";
+				slider.style.top="520px";
+				slider.style.display="block";	
+
+				var year = document.getElementById('year');
+				year.style.display = "block";
+				year.innerHTML=xindicator;
+				year.style.position ="absolute";
+				year.style.top = "544px";
+				year.style.left = 30 + ((xindicator - 1996) * 23) + "px";
+				
+				var year1996 = document.getElementById('year1996');
+				year1996.style.display = "block";
+				year1996.innerHTML=1996;
+				year1996.style.position ="absolute";
+				year1996.style.top = "544px";
+				year1996.style.left = "30px";
+				
+				var source = document.getElementById('source');
+				year.style.display = "block";
+				source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a distintas fuentes.</small>';
+				
+				
+			}
+			
+			if (indicator == "percapita2013") {
+				variable_text = "<strong>Residuos enviados al CEAMSE<br>per cápita</strong> (2013) - en toneladas";
+				var format = d3.format(",.3f");
+				document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+			
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 0 + "px");
+				
+				var legend = document.getElementById('legend');
+				legend.style.display = "none";
+				
+				var slide = document.getElementById('slide');
+				slide.style.display = "none";	
+				
+				var year1996 = document.getElementById('year1996');
+				year1996.style.display = "none";
+				
+				var year = document.getElementById('year');
+				year.style.display = "none";
+
+				var source = document.getElementById('source');
+				source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a datos de la CEAMSE</small>';
+			}
+			
+			if (indicator == "rsuspending") {
+				variable_text = "<strong>Gasto en RSU</strong> (2012)<br> en millones de pesos";
+				var format = d3.format("$.2s");
+				document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+			
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 0 + "px");
+
+				var legend = document.getElementById('legend');
+				legend.style.display = "none";
+				
+				var slide = document.getElementById('slide');
+				slide.style.display = "none";
+				
+				var year1996 = document.getElementById('year1996');
+				year1996.style.display = "none";				
+				
+				var year = document.getElementById('year');
+				year.style.display = "none";
+				
+				var source = document.getElementById('source');
+				source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a datos de la Dirección General de Contaduría de la CABA y de la Dirección Técnica Municipal de la Provincia de Buenos Aires. Los datos consignados corresponden mayoritariamente a los servicios de recolección y barrido, pudiendo no incluir otros gastos en RSU.</small>';				
+			}			
+
+			if (indicator == "percapitaspending") {
+				variable_text = "<strong>Gasto RSU per capita</strong> (2012)<br> en pesos";
+				var format = d3.format("$,.0f");
+				document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+			
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 0 + "px");
+				
+				var legend = document.getElementById('legend');
+				legend.style.display = "none";
+				
+				var slide = document.getElementById('slide');
+				slide.style.display = "none";
+				
+				var year1996 = document.getElementById('year1996');
+				year1996.style.display = "none";
+				
+				var year = document.getElementById('year');
+				year.style.display = "none";
+				
+				var source = document.getElementById('source');
+				source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a datos de la Dirección General de Contaduría de la CABA y de la Dirección Técnica Municipal de la Provincia de Buenos Aires. Los datos consignados corresponden mayoritariamente a los servicios de recolección y barrido, pudiendo no incluir otros gastos en RSU.</small>';					
+			}				
+
+			if (indicator == "rsutotalspending") {
+				variable_text = "<strong>Porcentaje del presupuesto<br>destinado a RSU</strong> (2012)";
+				var format = d3.format(",.1%");
+				document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+			
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 0 + "px");
+				
+				var legend = document.getElementById('legend');
+				legend.style.display = "none";
+				
+				var slide = document.getElementById('slide');
+				slide.style.display = "none";
+				
+				var year1996 = document.getElementById('year1996');
+				year1996.style.display = "none";
+				
+				var year = document.getElementById('year');
+				year.style.display = "none";
+
+				var source = document.getElementById('source');
+				source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a datos de la Dirección General de Contaduría de la CABA y de la Dirección Técnica Municipal de la Provincia de Buenos Aires. Los datos consignados corresponden mayoritariamente a los servicios de recolección y barrido, pudiendo no incluir otros gastos en RSU.</small>';					
+			}
+
+			if (indicator == "recolection") {
+				variable_text = "<strong>Residuos recuperados<br>(promedio mensual 2014)</strong> - en toneladas";
+				var format = d3.format(",.0f");
+				document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+			
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 0 + "px");
+
+				var legend = document.getElementById('legend');
+				legend.style.display = "none";
+				
+				var slide = document.getElementById('slide');
+				slide.style.display = "none";
+								
+				var year1996 = document.getElementById('year1996');
+				year1996.style.display = "none";
+
+				var year = document.getElementById('year');
+				year.style.display = "none";
+				
+				var source = document.getElementById('source');
+				source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a fuentes municipales diversas (recolección diferenciada) y datos de la CEAMSE (disposición rellenos sanitarios).</small>';				
+			}
+
+			if (indicator == "recover2014") {
+				variable_text = "<strong>Porcentaje de residuos recuperados<br>sobre total (2014)</strong>";
+				var format = d3.format(",.1%");
+				document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+			
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 0 + "px");				
+				
+				var legend = document.getElementById('legend');
+				legend.style.display = "none";
+				
+				var slide = document.getElementById('slide');
+				slide.style.display = "none";
+								
+				var year1996 = document.getElementById('year1996');
+				year1996.style.display = "none";
+				
+				var year = document.getElementById('year');
+				year.style.display = "none";
+				
+				var source = document.getElementById('source');
+				source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a fuentes municipales diversas (recolección diferenciada) y datos de la CEAMSE (disposición rellenos sanitarios).</small>';					
+			}			
+
+			if (indicator == "total2014") {
+				variable_text = "<strong>Total residuos dispuestos y<br>recuperados (2014)</strong> - en toneladas";
+				var format = d3.format(",.0f");
+				document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+			
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 0 + "px");
+
+				var legend = document.getElementById('legend');
+				legend.style.display = "none";
+				
+				var slide = document.getElementById('slide');
+				slide.style.display = "none";
+				
+				var year1996 = document.getElementById('year1996');
+				year1996.style.display = "none";				
+				
+				var year = document.getElementById('year');
+				year.style.display = "none";
+				
+				var source = document.getElementById('source');
+				source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a fuentes municipales diversas (recolección diferenciada) y datos de la CEAMSE (disposición rellenos sanitarios).</small>';				
+			} 
+		
+		// BAR CHART	
+		if (timeseries == "ceamse") {
+		
+			var min = d3.min((ceamseline));
+			var max = d3.max((ceamseline));
+			var x = d3.scale.linear().domain([0, 10]).range([0, 240]);
+			var y = d3.scale.linear().domain([max, min]).range([0, 60]);
+			var line = d3.svg.line()
+
+				.x(function(d,i) { 
+					return x(i); 
+				})
+				.y(function(d) { 
+					return y(d); 
+				})
+		
+			d3.select("#graph").remove();
+			d3.select("#ceamsegraph").remove();
+			d3.select("#toolrect").remove();
+				
+			svg.append("path")
+				.attr("d", line(ceamseline))
+				.attr("id", "graph")
+				.attr("stroke", "#000")
+				.style("stroke-width", "1.5px")
+				.style("fill", "none")
+				.attr("transform", function(d) { return "translate(20, 565)"; });
+				
+			var toolrect = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolrect")
+				.attr("id", "toolrect")
+				.attr("opacity", 0.8);
+			
+			toolrect.html('<table width="100%" style="background:#666"><tr><td height="40px"><font color="#fff"><font size="3">Evolución de envíos al CEAMSE. Total jurisdicciones</font></font></td></tr></table>')
+					   .style("left", 10 + "px")
+					   .style("top", 480 + "px");
+			}
+			
+
+		
+		var x = d3.scale.linear().range([0, 260]),
+			y = d3.scale.ordinal().rangeRoundBands([18, 600], .1);
+
+		var xAxis = d3.svg.axis().scale(x).orient("top").ticks(5).tickSize(5),
+		    yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);			
+
+		xAxis.tickFormat(function(d) { return format(d).replace('.', ',').replace('.',','); });
+		xAxis.tickFormat(function(d) { return format(d).replace(',', '.').replace(',','.'); });
+		
+		d3.csv("data/buenosaires-conurbano.csv", function(datum) {
+
+		var data = datum.filter(function(d){ return (d[indicator] > 0); });
+			data.forEach(function(d) { d[indicator] = +d[indicator]; });
+			data.sort(function(a, b) { return b[indicator] - a[indicator]; });
+			
+		var min = d3.min(data, function(d) { return d[indicator]; });
+		var max = d3.max(data, function(d) { return d[indicator]; });		
+		var median = d3.median(data, function(d) { return d[indicator]; });
+		var color = d3.scale.linear()
+		
+		.domain([min, median, max])
+		.range(["#ffd300", "#e5e5e5", "#ff9624"]);	
+			
+			x.domain([0, d3.max(data, function(d) { return d[indicator]; })]);
+			y.domain(data.map(function(d) { 
+					return regions[d.name]["nombre"];
+			}));
+
+			svg.selectAll("g.bar").remove();
+
+			var bar = svg.selectAll("g.bar")
+				.data(data)
+				.enter().append("g")
+				.attr("class", "bar")
+				.attr("transform", function(d) { return "translate(560," + (40 + y(regions[d.name]["nombre"])) + ")"; });
+
+			bar.append("rect")
+				.attr("width", 0)
+				.attr("height", y.rangeBand())
+				.attr("class", function(d) { return "bar_" + regions[d.name]["type"]; })
+				.style("opacity", 0)
+				.style("fill", function(d) { return color(d[indicator]); })
+				.style("opacity", 1)
+				.attr("id", function(d) { return d.name; })
+				.on("mouseover", highlight)
+				.on("mouseout", unhighlight)				
+				.transition()
+					.duration(500)
+				.attr("width", function(d) { return x(d[indicator]); });
+
+			d3.select("#xaxis").remove();
+			
+			svg.append("g")
+			  .attr("id", "xaxis")
+			  .attr("class", "x axis")
+			  .attr("transform", function(d) { return "translate(560,60)"; })
+			  .call(xAxis);
+
+			d3.select("#yaxis").remove();
+			
+			svg.append("g")
+			  .attr("id", "yaxis")
+			  .attr("class", "y axis")
+			  .attr("transform", function(d) { return "translate(560,40)"; })
+			  .call(yAxis);
+			  
+			bar.append("text")
+				.filter(function(d){ return d[indicator] > 0; })
+				.attr("class", "value")
+				.attr("x", function(d) { return x(d[indicator]); })
+				.attr("y", y.rangeBand() / 2)
+				.attr("dx", +3)
+				.attr("dy", ".35em")
+				.attr("text-anchor", "begin")
+				.text(function(d) { return (format(d[indicator])).replace(',','.').replace(',','.'); });				  
+		
+		d3.csv("data/buenosaires-conurbano.csv", function(datum) {
+		
+		var baloons = datum.filter(function(d){ return (d[indicator] > 0); });
+
+		baloons.forEach(function(d) {d[indicator] = +d[indicator]; });	
+
+		var min = d3.min(baloons, function(d) { return d[indicator]; });
+		var max = d3.max(baloons, function(d) { return d[indicator]; });		
+		var median = d3.median(baloons, function(d) { return d[indicator]; });
+		var color = d3.scale.linear()
+		
+		.domain([min, median, max])
+		.range(["#ffd300", "#e5e5e5", "#ff9624"]);						 					 
+
+		//MAP
+		d3.json("data/buenosaires-conurbano.topojson", function(error, data) {
+        for (var i = 0; i < baloons.length; i++) {
+
+            var dataState = baloons[i].name;
+            var dataindicator = parseFloat(baloons[i][indicator]);
+			
+			var jsonState = data.objects.geo_regions.geometries[i].properties.ID;
+
+            for (var j = 0; j < data.objects.geo_regions.geometries.length; j++) {
+
+            var jsonState = data.objects.geo_regions.geometries[j].properties.ID;
+			
+            if (dataState == jsonState) {
+                 data.objects.geo_regions.geometries[j].properties.indicator = dataindicator;
+                break;}
+				}
+			}
+
+
+			var path = d3.geo.path()
+						 .projection(projection);
+						 					 
+			svg.selectAll(".geo_regions")
+			   
+			   .data(topojson.object(data, data.objects.geo_regions).geometries)
+			   .enter()
+			   .append("path")
+			   .attr("class", function(d) { return d.properties.ID; })
+			   .attr("d", path)
+			   .style("fill", "#fff")
+			   .style("stroke", "#f0f0f0")
+			   .style("stroke-width", "1.2px")
+			   .style("opacity", 1)			   
+			   .filter(function(d){ return d.properties.indicator > 0; })
+			   .on("click", highlight)
+			   .on("mouseover", highlight)
+			   .on("mousemove", mousemove)
+			   .on("mouseout", unhighlight)
+			   .transition()
+					.duration(300)
+					.style("fill", function(d)
+						{
+						var indicator = d.properties.indicator;
+						if (indicator) { return color(indicator); } 
+						} );
+				})
+			});
+
+		});
+		
+							
+}
+			
+		function dumps () {
+		
+			//DUMPS ONLY
+		
+			svg.selectAll("path").remove();
+			d3.select("#toolrect").remove();
+			
+			d3.json("data/buenosaires-conurbano.topojson", function(error, data) {
+
+			var path = d3.geo.path()
+						 .projection(projection);
+						 
+			svg.selectAll(".geo_regions")
+			   .data(topojson.object(data, data.objects.geo_regions).geometries)
+			   .enter()
+			   .append("path")
+			   .attr("id", function(d) { return d.properties.ID; })
+			   .attr("class", function(d) { return d.properties.ID; })
+			   .on("mouseover", highlight)
+			   .on("mousemove", mousemove)
+			   .on("mouseout", unhighlight)
+			   .attr("d", path);	
+		});
+
+		var highlight = function (){
+			
+			var item = d3.select(this)
+				.style("stroke-width", "2px")				
+				.style("opacity", 0.6);
+				
+			var item_class = item.attr("class");
+			var show_tooltip = true;
+			var show_tooltable = true;
+			
+			if (item_class == "bar_ceamse" || item_class == "bar_basurero" || item_class == "bar_ceamse_ensenada" || item_class == "bar_ceamse_gonzalez"){
+				item_class = item.attr("id");
+				show_tooltip = false;
+			}
+			
+			var detached = $('.' + item_class).detach();
+			$('svg').append(detached);
+				
+			$('.' + item_class).css("stroke", "#fff")
+					   .css("stroke-width", "2.5px")
+					   .css("opacity", 0.6);
+			
+			if (show_tooltip == true){
+				tooltip.text(regions[item_class]["nombre"])
+					   .style("left", (d3.event.pageX - 34) + "px")
+					   .style("top", (d3.event.pageY - 12) + "px");			
+				
+				tooltip.transition()
+					   .duration(500)
+					   .style("opacity", 0.8);;					   
+			}
+			
+			if (show_tooltable == true){
+				tooltable.html('<table align="center"><tr><td height="44px"><font color="#fff"><h4 class="panel-title">' + (regions[item_class]["nombre"]) + '</h4></font></td></tr></table><table class="table" width="480" style="background:#fff"><tr><td align="center" width="50%"><small><strong>Población (2010)</strong></small></td><td align="center" width="50%"><small>' + (regions[item_class]["population"]) + ' hab.</small></td></tr><tr><td align="center"><small><strong>Cuenca hidrográfica</strong></small></td><td align="center"><small>' + (regions[item_class]["basin"]) + ' </small></td></tr><tr><td align="center"><small><strong>Gasto público total (2012)</strong></small></td><td align="center"><small>' + (regions[item_class]["spending"]) + ' </small></td></tr></table>')
+					   .style("left", 10 + "px")
+					   .style("top", 480 + "px");				
+				
+				tooltable.transition()
+					   .duration(200)
+					   .style("opacity", 0.8);;					   
+			}			
+		
+			
+			$('#' + item_class).css("stroke", "grey")
+					   .css("stroke-width", "2px")
+					   .css("opacity", 0.6);
+ 
+
+		}
+		
+		var unhighlight = function (){
+			var item = d3.select(this)
+				.style("stroke-width", "0.5px")				
+				.style("opacity", 0.8);
+				
+			var show_tooltip = true;
+			var show_tooltable = true;
+			
+			var item_class = item.attr("class");
+			
+			if (item_class == "bar_ceamse" || item_class == "bar_basurero" || item_class == "bar_ceamse_ensenada" || item_class == "bar_ceamse_gonzalez"){
+				item_class = item.attr("id");
+				show_tooltip = false;
+			}
+			
+			$('.' + item_class).css("stroke", "#f0f0f0")
+			                   .css("stroke-width", "1.2px")
+							   .css("opacity", 1);
+							   			
+			if (show_tooltip == true){
+				tooltip.transition()
+					   .duration(1000)
+					   .style("opacity", 1e-6);
+			}
+			
+			if (show_tooltable == true){
+				tooltable.transition()
+					   .duration(100)
+					   .style("opacity", 1e-6);
+			}			
+				   
+			$('#' + item_class).css("stroke", "none")
+							   .css("stroke-width", "1.2px")
+							   .css("opacity", 1);
+			
+	
+
+		}
+		
+    
+		//TOOLTIPS
+		d3.select('body').selectAll('div.tooltip').remove();
+		
+		var tooltip = d3.select("body")
+				.append("div")
+				.attr("class", "tooltip")
+				.style("opacity", 1e-6);
+
+		d3.select('body').selectAll('div.tooltable').remove();
+		
+		var tooltable = d3.select("#svg")
+				.append("div")
+				.attr("class", "tooltable")
+				.style("opacity", 1e-6);
+		
+		function mousemove() {
+			tooltip.style("left", (d3.event.pageX + 3) + "px")
+			       .style("top", (d3.event.pageY - 26) + "px");
+		}	
+		
+				
+		
+		
+		// BAR CHART	
+		indicator = "population";
+		
+
+		var format = d3.format(",.0f");
+		
+		variable_text = "<strong>Población</strong> - en habitantes (2010)";
+		document.getElementById('variable').innerHTML='';
+				<!--document.getElementById('variable').innerHTML=variable_text;-->
+				
+
+			d3.select('body').selectAll('div.toolvariable').remove();
+			var toolvariable = d3.select("#svg")
+				.append("div")
+				.attr("class", "toolvariable")
+				.attr("id", "toolvariable")
+				.attr("opacity", 0.8);
+			
+			toolvariable.html(variable_text)
+					   .style("left", 580 + "px")
+					   .style("top", 0 + "px");
+		
+		var legend = document.getElementById('legend');
+		legend.style.display = "block";
+		var slide = document.getElementById('slide');
+		slide.style.display = "none";
+		var year = document.getElementById('year');
+		year.style.display = "none";				
+		var year1996 = document.getElementById('year1996');
+		year1996.style.display = "none";
+		
+		var source = document.getElementById('source');
+		source.innerHTML='<small><strong>Fuente:</strong> Proyecto Modelos y prácticas de gestión de residuos sólidos urbanos en los municipios de la Región Metropolitana de Buenos Aires, Escuela de Política y Gobierno, UNSAM - elaboración propia en base a distintas fuentes.	</small>';		
+		
+				
+		var x = d3.scale.linear().range([0, 260]),
+			y = d3.scale.ordinal().rangeRoundBands([18, 600], .1);
+
+		var xAxis = d3.svg.axis().scale(x).orient("top").ticks(3).tickSize(3),
+		    yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);			
+
+		xAxis.tickFormat(function(d) { return format(d).replace(',', '.').replace(',','.'); });
+		
+		d3.csv("data/buenosaires-conurbano.csv", function(data) {
+
+			// Parse numbers, and sort by indicator.
+			data.forEach(function(d) { d[indicator] = +d[indicator]; });
+			data.sort(function(a, b) { return b[indicator] - a[indicator]; });
+
+			// Set the scale domain.
+			x.domain([0, d3.max(data, function(d) { return d[indicator]; })]);
+			y.domain(data.map(function(d) { 
+					return regions[d.name]["nombre"];
+			}));
+
+			svg.selectAll("g.bar").remove();
+			
+			var bar = svg.selectAll("g.bar")
+						 .data(data)
+						 .enter().append("g")
+						 .attr("class", "bar")
+						 .attr("transform", function(d) { 
+								return "translate(560," + (40 + y(regions[d.name]["nombre"])) + ")";
+						 });
+			
+			bar.append("rect")
+				.attr("width", function(d) { return x(d[indicator]); })
+				.attr("height", y.rangeBand())
+				.attr("class", function(d) { return "bar_" + regions[d.name]["type"]; })
+				.attr("id", function(d) { return d.name; })
+				.on("mouseover", highlight)
+				.on("mouseout", unhighlight);
+
+
+			d3.select("#xaxis").remove();
+			
+			svg.append("g")
+			  .attr("id", "xaxis")
+			  .attr("class", "x axis")
+			  .attr("transform", function(d) { return "translate(560,60)"; })
+			  .call(xAxis);
+
+			d3.select("#yaxis").remove();
+			
+			svg.append("g")
+			  .attr("id", "yaxis")
+			  .attr("class", "y axis")
+			  .attr("transform", function(d) { return "translate(560,40)"; })
+			  .call(yAxis);
+			  
+			bar.append("text")
+				.attr("class", "value")
+				.attr("x", function(d) { return x(d[indicator]); })
+				.attr("y", y.rangeBand() / 2)
+				.attr("dx", +3)
+				.attr("dy", ".35em")
+				.attr("text-anchor", "begin")
+				.text(function(d) { return (format(d[indicator])).replace(',','.').replace(',','.'); });				  
+		}
+		)
+		}
+
+		function twitter() 	{
+			window.open("https://twitter.com/intent/tweet?text=Residuos%20solidos%20urbanos%3A&amp;tw_p=tweetbutton&amp;url=" + document.URL,"_blank");
+							}
+		function facebook() {
+			window.open("https://www.facebook.com/sharer/sharer.php?u=" + document.URL,"_blank");
+							}
+
+		function google() 	{
+			window.open("https://plus.google.com/share?url=" + document.URL,"_blank");
+							}							
+</script>	
+</body>
+</html>
